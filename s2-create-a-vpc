@@ -1,0 +1,5 @@
+## Create a vpc
+export AWS_VPC_ID=$( aws ec2 create-vpc \
+   --cidr-bloc 10.0.0.0/16 \
+   --query 'Vpc.{VpcId:VpcId}'\
+   --output text)

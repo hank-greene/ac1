@@ -1,0 +1,8 @@
+hg> aws configure
+AWS Access Key ID [None]: AKIAZJXH77OXOKTEGRL7
+AWS Secret Access Key [None]: ... removed for security reasons ... 
+Default region name [None]: us-east-1
+Default output format [None]: json
+hg> aws s3 ls
+2021-12-03 17:08:16 cf-templates-zjmuvssztwrf-us-east-1
+2020-06-15 20:39:23 elasticbeanstalk-us-east-1-639362923438

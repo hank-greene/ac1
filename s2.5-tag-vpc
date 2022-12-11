@@ -1,0 +1,2 @@
+## tag/name the vpc
+aws ec2 create-tags --resources ( echo $AWS_VPC_ID ) --tags Key=Name,Value=LRN_ACLI

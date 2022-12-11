@@ -1,0 +1,24 @@
+
+hg> aws ec2 --output text --query 'Vpcs[*].{VpcId:VpcId,Name:Tags[?Key==`Name`].Value|[0],CidrBlock:CidrBlock}' describe-vpcs
+10.0.0.0/16     None    vpc-02965704087ecb4aa
+10.0.0.0/16     None    vpc-0ae577db3bffeec91
+172.31.0.0/16   vpc-1   vpc-803edbfd
+10.0.0.0/16     None    vpc-04cd71071431b93fa
+10.0.0.0/16     CLI-VPC vpc-04f8ed394e379a564
+hg> aws ec2 delete-vpc --vpc-id vpc-02965704087ecb4aa
+hg> aws ec2 --output text --query 'Vpcs[*].{VpcId:VpcId,Name:Tags[?Key==`Name`].Value|[0],CidrBlock:CidrBlock}' describe-vpcs
+10.0.0.0/16     None    vpc-0ae577db3bffeec91
+172.31.0.0/16   vpc-1   vpc-803edbfd
+10.0.0.0/16     None    vpc-04cd71071431b93fa
+10.0.0.0/16     CLI-VPC vpc-04f8ed394e379a564
+hg> aws ec2 delete-vpc --vpc-id vpc-0ae577db3bffeec91
+hg> aws ec2 --output text --query 'Vpcs[*].{VpcId:VpcId,Name:Tags[?Key==`Name`].Value|[0],CidrBlock:CidrBlock}' describe-vpcs
+172.31.0.0/16   vpc-1   vpc-803edbfd
+10.0.0.0/16     None    vpc-04cd71071431b93fa
+10.0.0.0/16     CLI-VPC vpc-04f8ed394e379a564
+hg> aws ec2 delete-vpc --vpc-id vpc-04cd71071431b93fa
+hg> aws ec2 --output text --query 'Vpcs[*].{VpcId:VpcId,Name:Tags[?Key==`Name`].Value|[0],CidrBlock:CidrBlock}' describe-vpcs
+172.31.0.0/16   vpc-1   vpc-803edbfd
+10.0.0.0/16     CLI-VPC vpc-04f8ed394e379a564
+
+
