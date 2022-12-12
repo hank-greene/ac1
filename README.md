@@ -52,19 +52,19 @@ https://brad-simonin.medium.com/create-an-aws-vpc-and-subnet-using-the-aws-cli-a
 
 "VpcId": "vpc-039f245cebc7080bc"
 
-2. names the VPC
+ 2. names the VPC
   aws ec2 create-tags --resources <vpc-id> --tags Key=<tag-key>,Value=<tag-value>
   aws ec2 create-tags --resources vpc-039f245cebc7080bc --tags Key=Name,Value=AC1
 
-3. adds dns support
+ 3. adds dns support
   aws ec2 modify-vpc-attribute --vpc-id $AWS_VPC_ID --enable-dns-support "{\"Value\":true}"
   aws ec2 modify-vpc-attribute --vpc-id vpc-039f245cebc7080bc --enable-dns-support "{\"Value\":true}"
 
-4. adds a dns hostname
+ 4. adds a dns hostname
   aws ec2 modify-vpc-attribute --vpc-id "$vpcId" --enable-dns-hostnames "{\"Value\":true}")
   aws ec2 modify-vpc-attribute --vpc-id vpc-039f245cebc7080bc --enable-dns-hostnames "{\"Value\":true}"
 
-5. creates an internet gateway
+ 5. creates an internet gateway
   sudo apt-get install jq
 
   export gateway_response=$(aws ec2 create-internet-gateway --output json)
@@ -73,11 +73,45 @@ https://brad-simonin.medium.com/create-an-aws-vpc-and-subnet-using-the-aws-cli-a
   echo $gatewayId
   igw-09499d5669cd460f9
 
-6. names the internet gateway
+ 6. names the internet gateway
   aws ec2 create-tags --resources "$gatewayId" --tags Key=Name,Value="$gatewayName"
   aws ec2 create-tags --resources igw-09499d5669cd460f9 --tags Key=Name,Value=AC1_Gateway
 
-7. creates the subnet
+ 7. creates the subnet
+
+ 8. names the subnet
+
+
+
+ 9. enables public ip on the subnet
+
+
+
+10. creates the security group for the subnet
+
+
+
+11. names the security group
+
+
+
+12. enables port 22 for ssh
+
+
+
+13. creates the route table
+
+
+
+14. names the route table
+
+
+
+15. adds route to the internet gateway
+
+
+
+16. adds the route table to the subnet
 
 
 
@@ -105,7 +139,6 @@ https://okigiveup.net/
 https://vaneyckt.io/posts/creating_an_ec2_instance_in_a_vpc_with_the_aws_cli/
 
 https://serverfault.com/questions/648332/how-to-list-all-vpc-dependencies-in-aws-cli
-
 
 https://www.golinuxcloud.com/aws-cli-tutorial/
 
